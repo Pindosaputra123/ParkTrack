@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Des 28, 2024 at 07:24 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 28 Des 2024 pada 01.42
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `histori_parkir`
+-- Struktur dari tabel `histori_parkir`
 --
 
 CREATE TABLE `histori_parkir` (
@@ -35,18 +35,10 @@ CREATE TABLE `histori_parkir` (
   `tanggal_keluar` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `histori_parkir`
---
-
-INSERT INTO `histori_parkir` (`id`, `lokasi_parkir`, `plat_motor`, `tanggal_masuk`, `tanggal_keluar`) VALUES
-(242, 'B2', 'B 123-234-432', '2023-06-18 05:01:58', NULL),
-(243, 'A1', 'wewewe', '2023-06-18 06:29:09', NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `motor`
+-- Struktur dari tabel `motor`
 --
 
 CREATE TABLE `motor` (
@@ -56,18 +48,10 @@ CREATE TABLE `motor` (
   `id_user_pemilik` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `motor`
---
-
-INSERT INTO `motor` (`plat`, `lokasi_parkir`, `tanggal_masuk`, `id_user_pemilik`) VALUES
-('B 123-234-432', 'B2', '2023-06-18 05:01:58', 92),
-('wewewe', 'A1', '2023-06-18 06:29:08', 91);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tempat_parkir`
+-- Struktur dari tabel `tempat_parkir`
 --
 
 CREATE TABLE `tempat_parkir` (
@@ -76,15 +60,17 @@ CREATE TABLE `tempat_parkir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tempat_parkir`
+-- Dumping data untuk tabel `tempat_parkir`
 --
 
 INSERT INTO `tempat_parkir` (`lokasi_parkir`, `plat_motor`) VALUES
+('A1', NULL),
 ('A2', NULL),
 ('A3', NULL),
 ('A4', NULL),
 ('A5', NULL),
 ('B1', NULL),
+('B2', NULL),
 ('B3', NULL),
 ('B4', NULL),
 ('B5', NULL),
@@ -137,14 +123,12 @@ INSERT INTO `tempat_parkir` (`lokasi_parkir`, `plat_motor`) VALUES
 ('L2', NULL),
 ('L3', NULL),
 ('L4', NULL),
-('L5', NULL),
-('B2', 'B 123-234-432'),
-('A1', 'wewewe');
+('L5', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -156,59 +140,59 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `is_admin`, `created_at`) VALUES
 (91, 'admin', '$2a$12$VbSE9/cse0gMJMGbfBBHc.ncF2UsxG8.tVK47sr06h29h0Qq/Sa.6', 1, '2023-06-18 00:12:17'),
-(92, 'Marko', '$2y$12$sk5nCuGtwe.aklCceXDWLOQuq7zNNE726dBvuk9jhCEZCw2mh5Q2m', 0, '2023-06-18 05:01:58');
+(92, 'pindo', '$2y$12$VlSwWZRMC1aoZngGWvEiXOGmgN6NlYvyKWAGhW7xOFLZC8xDoyQdi', 0, '2024-12-28 00:37:28');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `histori_parkir`
+-- Indeks untuk tabel `histori_parkir`
 --
 ALTER TABLE `histori_parkir`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `motor`
+-- Indeks untuk tabel `motor`
 --
 ALTER TABLE `motor`
   ADD PRIMARY KEY (`plat`),
   ADD UNIQUE KEY `lokasi_parkir` (`lokasi_parkir`);
 
 --
--- Indexes for table `tempat_parkir`
+-- Indeks untuk tabel `tempat_parkir`
 --
 ALTER TABLE `tempat_parkir`
   ADD PRIMARY KEY (`lokasi_parkir`),
   ADD UNIQUE KEY `id_motor` (`plat_motor`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `histori_parkir`
+-- AUTO_INCREMENT untuk tabel `histori_parkir`
 --
 ALTER TABLE `histori_parkir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
