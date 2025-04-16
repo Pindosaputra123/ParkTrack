@@ -1,5 +1,6 @@
-# Kang-Parkir
-Sistem Manajemen Parkir adalah aplikasi berbasis desktop yang dirancang untuk mengelola data parkir kendaraan. Sistem ini memungkinkan pengguna untuk mencatat, melihat, dan mengatur kendaraan yang masuk dan keluar dari area parkir.
+# ParkTrack
+
+ParkTrack adalah aplikasi berbasis desktop yang dirancang untuk mengelola data parkir kendaraan. Sistem ini memungkinkan pengguna untuk mencatat, melihat, dan mengatur kendaraan yang masuk dan keluar dari area parkir.
 
 ## Fitur Website
 List fitur dari aplikasi ini adalah sebagai berikut: 
@@ -20,7 +21,7 @@ List fitur dari aplikasi ini adalah sebagai berikut:
 
 ## Struktur Folder
 
-**Kang-Parkir**
+**ParkTrack**
 -   **admin** (Tempat halaman utama admin dan laporan)
 -   **api** (Tempat file yang menghandle logic AJAX)
 -   **components** (Tempat folder dan file komponen HTML yang digunakan pada project)
