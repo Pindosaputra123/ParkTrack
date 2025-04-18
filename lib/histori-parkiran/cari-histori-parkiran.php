@@ -19,7 +19,7 @@ function cariHistoriParkiran(mysqli $conn, string $keyword, int $halaman_aktif, 
     "
   );
 
-  mysqli_stmt_bind_param($stmt, "ssdd", $keyword_sql, $keyword_sql, $halaman_aktif_sql, $jml_per_halaman);
+  mysqli_stmt_bind_param($stmt, "ssii", $keyword_sql, $keyword_sql, $halaman_aktif_sql, $jml_per_halaman);
   mysqli_stmt_execute($stmt);
 
   mysqli_stmt_bind_result(

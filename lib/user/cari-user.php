@@ -3,7 +3,6 @@ function cariUser(mysqli $conn, string $keyword, int $halaman_aktif, int $jml_pe
 {
   $is_admin = $cari_admin ? 1 : 0;
 
-  // setting halaman dan query
   $stmt_jml_user = mysqli_query($conn, "SELECT id FROM user WHERE username LIKE '%$keyword%' AND is_admin = $is_admin");
   $jml_user = mysqli_num_rows($stmt_jml_user);
   $total_halaman = ceil($jml_user / $jml_per_halaman) > 0 ? ceil($jml_user / $jml_per_halaman) : 1;
@@ -21,7 +20,8 @@ function cariUser(mysqli $conn, string $keyword, int $halaman_aktif, int $jml_pe
     LIMIT ?, ?"
   );
 
-  mysqli_stmt_bind_param($stmt, "sdd", $keyword_sql, $halaman_aktif_sql, $jml_per_halaman);
+  // FIX di sini
+  mysqli_stmt_bind_param($stmt, "sii", $keyword_sql, $halaman_aktif_sql, $jml_per_halaman);
   mysqli_stmt_execute($stmt);
 
   mysqli_stmt_bind_result(
@@ -33,13 +33,12 @@ function cariUser(mysqli $conn, string $keyword, int $halaman_aktif, int $jml_pe
     $jumlah_motor
   );
 
-  // Rangkai data
   $data = [
     'user_arr' => [],
     "total_halaman" => $total_halaman,
     'halaman_aktif' => $halaman_aktif >= $total_halaman ? $halaman_aktif : $total_halaman,
-    'halaman_sebelumnya' => $halaman_aktif - 1 !== 0  ? $halaman_aktif - 1 : null,
-    'halaman_berikutnya' =>  $halaman_aktif + 1 <= $total_halaman  ? $halaman_aktif + 1 : null
+    'halaman_sebelumnya' => $halaman_aktif - 1 !== 0 ? $halaman_aktif - 1 : null,
+    'halaman_berikutnya' => $halaman_aktif + 1 <= $total_halaman ? $halaman_aktif + 1 : null
   ];
 
   while (mysqli_stmt_fetch($stmt)) {
